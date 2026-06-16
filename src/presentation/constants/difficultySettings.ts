@@ -20,14 +20,3 @@ export const DIFFICULTY_SETTINGS: Record<GameDifficulty, DifficultyConfig> = {
     mineCount: 99,
   },
 };
-
-export const ADJACENT_MINE_COLOURS: Record<number, string> = {
-  1: 'text-blue-600',
-  2: 'text-green-600',
-  3: 'text-red-600',
-  4: 'text-blue-900',
-  5: 'text-red-900',
-  6: 'text-teal-600',
-  7: 'text-black',
-  8: 'text-gray-500',
-};

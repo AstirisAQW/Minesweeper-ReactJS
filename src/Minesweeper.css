@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+/* Reset or base styles if desired */
+body {
+  margin: 0;
+}
