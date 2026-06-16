@@ -1,4 +1,4 @@
-import type { Cell, Grid } from '../entities/Cell';
+import type { Grid } from '../entities/Cell';
 
 export function createEmptyGrid(numberOfRows: number, numberOfColumns: number): Grid {
   return Array.from({ length: numberOfRows }, () =>
@@ -109,6 +109,14 @@ export function checkWinCondition(grid: Grid, totalMineCount: number): boolean {
 export function revealAllMines(gridSnapshot: Grid): Grid {
   return gridSnapshot.map(row =>
     row.map(cell => (cell.isThereMine ? { ...cell, isRevealed: true } : cell))
+  );
+}
+
+export function markWrongFlags(grid: Grid): Grid {
+  return grid.map(row =>
+    row.map(cell =>
+      cell.isFlagged && !cell.isThereMine ? { ...cell, isWrongFlag: true } : cell
+    )
   );
 }
 

@@ -13,6 +13,7 @@ export const CELL_SPRITES = {
   emptyCell:  { x_coordinate: 17, y_coordinate: 49, w: 16, h: 16 },
   mine:      { x_coordinate: 85, y_coordinate: 49, w: 16, h: 16 },
   flag:      { x_coordinate: 34, y_coordinate: 49, w: 16, h: 16 },
+  wrongFlag:    { x_coordinate: 119, y_coordinate: 49, w: 16, h: 16 },
   explodedMine: { x_coordinate: 102, y_coordinate: 49, w: 16, h: 16 },
   number1:  { x_coordinate: 0,   y_coordinate: 66, w: 16, h: 16 },
   number2: { x_coordinate: 17,  y_coordinate: 66, w: 16, h: 16 },

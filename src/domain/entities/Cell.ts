@@ -4,6 +4,7 @@ export interface Cell {
   isFlagged: boolean;
   howManyAdjacentMines: number;
   isDeathMine?: boolean;
+  isWrongFlag?: boolean;
 }
 
 export type Grid = Cell[][];

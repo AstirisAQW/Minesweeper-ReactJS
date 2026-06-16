@@ -10,7 +10,10 @@ interface CellProps {
 
 function getCellSprite(cell: Cell): SpriteFrame {
   if (!cell.isRevealed) {
-    return cell.isFlagged ? CELL_SPRITES.flag : CELL_SPRITES.normalCell;
+    if (cell.isFlagged) {
+      return cell.isWrongFlag ? CELL_SPRITES.wrongFlag : CELL_SPRITES.flag;
+    }
+    return CELL_SPRITES.normalCell;
   }
 
   if (cell.isThereMine) {
