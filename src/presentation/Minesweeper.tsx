@@ -25,7 +25,7 @@ export default function Minesweeper() {
         onSelectDifficulty={startNewGame}
       />
 
-      <div className="bg-gray-300 border-4 border-t-gray-100 border-l-gray-100 border-b-gray-500 border-r-gray-500 p-3 inline-block">
+      <div className="bg-gray-300 border-4 border-t-gray-100 border-l-gray-100 border-b-gray-500 border-r-gray-500 p-3 inline-block"style={{ zoom: 2 }}>
         <MinesweeperHud
           remainingMineCount={remainingMineCount}
           displaySeconds={displaySeconds}
@@ -36,10 +36,7 @@ export default function Minesweeper() {
 
         <div
           className="border-2 border-t-gray-500 border-l-gray-500 border-b-gray-100 border-r-gray-100"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: `repeat(${activeDifficultyConfig.numberOfColumns}, 16px)`,
-          }}
+          style={{ display: 'grid', gridTemplateColumns: `repeat(${activeDifficultyConfig.numberOfColumns}, 16px)` }}
         >
           {grid.map((row, rowIndex) =>
             row.map((cell, colIndex) => (
