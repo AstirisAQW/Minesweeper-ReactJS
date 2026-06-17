@@ -46,12 +46,12 @@ export function revealCellAction(
   }
 
   // Hit a mine
-if (clickedCell.isThereMine) {
-  const allMinesRevealed = revealAllMines(grid);
-  const withDeath = markDeathMine(allMinesRevealed, clickedRow, clickedColumn);
-  const withWrongFlags = markWrongFlags(withDeath);
-  return { grid: withWrongFlags, nextStatus: 'lost', shouldStartTimer: false };
-}
+  if (clickedCell.isThereMine) {
+    const allMinesRevealed = revealAllMines(grid);
+    const withDeath = markDeathMine(allMinesRevealed, clickedRow, clickedColumn);
+    const withWrongFlags = markWrongFlags(withDeath);
+    return { grid: withWrongFlags, nextStatus: 'lost', shouldStartTimer: false };
+  }
 
   // Safe cell reveal
   const revealed = floodFillReveal(grid, clickedRow, clickedColumn, numberOfRows, numberOfColumns);
