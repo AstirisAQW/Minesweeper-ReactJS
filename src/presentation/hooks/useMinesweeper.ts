@@ -68,7 +68,7 @@ export function useMinesweeper() {
   }, [gameStatus, grid]);
 
   const activeDifficultyConfig = DIFFICULTY_SETTINGS[selectedDifficulty];
-  const remainingMineCount = activeDifficultyConfig.mineCount - flagsPlaced;
+  const remainingMineCount = activeDifficultyConfig.numberOfMines - flagsPlaced;
   const displaySeconds = Math.min(elapsedSeconds, 999);
 
   return {

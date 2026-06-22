@@ -4,8 +4,8 @@ import { DIFFICULTY_SETTINGS } from '../../presentation/constants/difficultySett
 import {
   createEmptyGrid,
   buildGridWithMines,
-  floodFillReveal,
-  checkWinCondition,
+  revealCellsByFloodFill,
+  hasPlayerWon,
   revealAllMines,
   markDeathMine,
   markWrongFlags,
@@ -30,7 +30,7 @@ export function revealCellAction(
   currentStatus: GameStatus,
   difficulty: GameDifficulty,
 ): RevealCellResult {
-  const { numberOfRows, numberOfColumns, mineCount } = DIFFICULTY_SETTINGS[difficulty];
+  const { numberOfRows, numberOfColumns, numberOfMines } = DIFFICULTY_SETTINGS[difficulty];
   const clickedCell = grid[clickedRow][clickedColumn];
 
   if (clickedCell.isRevealed || clickedCell.isFlagged) {
@@ -39,14 +39,14 @@ export function revealCellAction(
 
   // First click: safe mine placement + flood fill
   if (currentStatus === 'idle') {
-    const withMines = buildGridWithMines(grid, numberOfRows, numberOfColumns, mineCount, clickedRow, clickedColumn);
-    const revealed = floodFillReveal(withMines, clickedRow, clickedColumn, numberOfRows, numberOfColumns);
-    const won = checkWinCondition(revealed, mineCount);
+    const withMines = buildGridWithMines(grid, numberOfRows, numberOfColumns, numberOfMines, clickedRow, clickedColumn);
+    const revealed = revealCellsByFloodFill(withMines, clickedRow, clickedColumn, numberOfRows, numberOfColumns);
+    const won = hasPlayerWon(revealed, numberOfMines);
     return { grid: revealed, nextStatus: won ? 'won' : 'playing', shouldStartTimer: true };
   }
 
   // Hit a mine
-  if (clickedCell.isThereMine) {
+  if (clickedCell.isMine) {
     const allMinesRevealed = revealAllMines(grid);
     const withDeath = markDeathMine(allMinesRevealed, clickedRow, clickedColumn);
     const withWrongFlags = markWrongFlags(withDeath);
@@ -54,8 +54,8 @@ export function revealCellAction(
   }
 
   // Safe cell reveal
-  const revealed = floodFillReveal(grid, clickedRow, clickedColumn, numberOfRows, numberOfColumns);
-  const won = checkWinCondition(revealed, mineCount);
+  const revealed = revealCellsByFloodFill(grid, clickedRow, clickedColumn, numberOfRows, numberOfColumns);
+  const won = hasPlayerWon(revealed, numberOfMines);
   return { grid: revealed, nextStatus: won ? 'won' : currentStatus, shouldStartTimer: false };
 }
 

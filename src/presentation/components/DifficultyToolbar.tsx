@@ -1,4 +1,4 @@
-import type { GameDifficulty, DifficultyConfig } from '../../domain/entities/Game';
+import type { GameDifficulty, MinesweeperGame } from '../../domain/entities/Game';
 import { DIFFICULTY_SETTINGS } from '../constants/difficultySettings';
 
 interface DifficultyToolbarProps {
@@ -9,7 +9,7 @@ interface DifficultyToolbarProps {
 export default function DifficultyToolbar({ selectedDifficulty, onSelectDifficulty }: DifficultyToolbarProps) {
   return (
     <div className="flex gap-2">
-      {(Object.entries(DIFFICULTY_SETTINGS) as [GameDifficulty, DifficultyConfig][]).map(
+      {(Object.entries(DIFFICULTY_SETTINGS) as [GameDifficulty, MinesweeperGame][]).map(
         ([key, config]) => (
           <button
             key={key}
@@ -22,7 +22,7 @@ export default function DifficultyToolbar({ selectedDifficulty, onSelectDifficul
               }
             `}
           >
-            {config.difficultyName}
+            {config.gameDifficulty}
           </button>
         )
       )}

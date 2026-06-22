@@ -1,22 +1,22 @@
-import type { GameDifficulty, DifficultyConfig } from '../../domain/entities/Game';
+import type { GameDifficulty, MinesweeperGame} from '../../domain/entities/Game';
 
-export const DIFFICULTY_SETTINGS: Record<GameDifficulty, DifficultyConfig> = {
+export const DIFFICULTY_SETTINGS: Record<GameDifficulty, MinesweeperGame> = {
   beginner: {
-    difficultyName: 'Beginner',
+    gameDifficulty: 'Beginner',
     numberOfRows: 9,
     numberOfColumns: 9,
-    mineCount: 10,
+    numberOfMines: 10,
   },
   intermediate: {
-    difficultyName: 'Intermediate',
+    gameDifficulty: 'Intermediate',
     numberOfRows: 16,
     numberOfColumns: 16,
-    mineCount: 40,
+    numberOfMines: 40,
   },
   expert: {
-    difficultyName: 'Expert',
+    gameDifficulty: 'Expert',
     numberOfRows: 16,
     numberOfColumns: 30,
-    mineCount: 99,
+    numberOfMines: 99,
   },
 };

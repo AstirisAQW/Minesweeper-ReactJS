@@ -11,20 +11,20 @@ interface CellProps {
 function getCellSprite(cell: Cell): SpriteFrame {
   if (!cell.isRevealed) {
     if (cell.isFlagged) {
-      return cell.isWrongFlag ? CELL_SPRITES.wrongFlag : CELL_SPRITES.flag;
+      return cell.isFlaggedWrong ? CELL_SPRITES.wrongFlag : CELL_SPRITES.flag;
     }
     return CELL_SPRITES.normalCell;
   }
 
-  if (cell.isThereMine) {
-    return cell.isDeathMine ? CELL_SPRITES.explodedMine : CELL_SPRITES.mine;
+  if (cell.isMine) {
+    return cell.didPlayerClickThisMine ? CELL_SPRITES.explodedMine : CELL_SPRITES.mine;
   }
 
-  if (cell.howManyAdjacentMines === 0) {
+  if (cell.numberOfSurroundingMines === 0) {
     return CELL_SPRITES.emptyCell;
   }
 
-  return CELL_SPRITES[`number${cell.howManyAdjacentMines}` as keyof typeof CELL_SPRITES];
+  return CELL_SPRITES[`number${cell.numberOfSurroundingMines}` as keyof typeof CELL_SPRITES];
 }
 
 export default function MinesweeperCell({ cell, onClick, onContextMenu }: CellProps) {
