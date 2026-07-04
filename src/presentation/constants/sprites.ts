@@ -1,4 +1,4 @@
-import spritesheet from '../../assets/Winmine31NT4and2000plus.png'
+import spritesheet from '../../../public/assets/Winmine31NT4and2000plus.png'
 export { spritesheet }
 
 export interface SpriteFrame {
