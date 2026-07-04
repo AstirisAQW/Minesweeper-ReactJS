@@ -114,21 +114,21 @@ export function revealCellsByFloodFill(
     grid[row][col] = { ...cell, isRevealed: true };
 
     if (cell.numberOfSurroundingMines === 0) {
-      for (let dr = -1; dr <= 1; dr++) {
-        for (let dc = -1; dc <= 1; dc++) {
-          if (dr === 0 && dc === 0) continue;
+      for (let rowOffset = -1; rowOffset <= 1; rowOffset++) {
+        for (let columnOffset = -1; columnOffset <= 1; columnOffset++) {
+          if (rowOffset === 0 && columnOffset === 0) continue;
 
-          const nr = row + dr;
-          const nc = col + dc;
+          const neighborRow = row + rowOffset;
+          const neighborColumn = col + columnOffset;
 
-          if (nr < 0 || nr >= numberOfRows || nc < 0 || nc >= numberOfColumns) continue;
+          if (neighborRow < 0 || neighborRow >= numberOfRows || neighborColumn < 0 || neighborColumn >= numberOfColumns) continue;
 
-          const key = `${nr},${nc}`;
+          const key = `${neighborRow},${neighborColumn}`;
           if (visited.has(key)) continue;
 
-          const neighbor = grid[nr][nc];
+          const neighbor = grid[neighborRow][neighborColumn];
           if (!neighbor.isRevealed && !neighbor.isFlagged && !neighbor.isMine) {
-            stack.push([nr, nc]);
+            stack.push([neighborRow, neighborColumn]);
             visited.add(key);
           }
         }
