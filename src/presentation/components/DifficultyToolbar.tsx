@@ -1,5 +1,5 @@
 import type { GameDifficulty, MinesweeperGame } from '../../domain/entities/Game';
-import { DIFFICULTY_SETTINGS } from '../constants/difficultySettings';
+import { DIFFICULTY_SETTINGS } from '../../domain/constants/difficultySettings';
 
 interface DifficultyToolbarProps {
   selectedDifficulty: GameDifficulty;

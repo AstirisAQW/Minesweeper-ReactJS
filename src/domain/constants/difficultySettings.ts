@@ -1,4 +1,4 @@
-import type { GameDifficulty, MinesweeperGame} from '../../domain/entities/Game';
+import type { GameDifficulty, MinesweeperGame} from '../entities/Game';
 
 export const DIFFICULTY_SETTINGS: Record<GameDifficulty, MinesweeperGame> = {
   beginner: {
