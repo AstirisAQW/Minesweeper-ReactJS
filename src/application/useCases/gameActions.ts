@@ -1,6 +1,6 @@
 import type { Grid } from '../../domain/entities/Cell';
 import type { GameDifficulty, GameStatus } from '../../domain/entities/Game';
-import { DIFFICULTY_SETTINGS } from '../../presentation/constants/difficultySettings';
+import { DIFFICULTY_SETTINGS } from '../../domain/constants/difficultySettings';
 import {
   createEmptyGrid,
   buildGridWithMines,
